@@ -6,12 +6,10 @@ on:
   push:
     branches:
       - main
-      - master
       - develop
   pull_request:
     branches:
       - main
-      - master
       - develop
 
 jobs:
@@ -26,7 +24,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       # ESLint and Prettier must be in `package.json`
       - name: Install Node.js dependencies
