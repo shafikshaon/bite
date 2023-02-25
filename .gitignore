@@ -83,3 +83,4 @@ db-data
 .DS_Store
 .idea/
 package-lock.json
+yarn.lock
