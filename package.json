@@ -29,7 +29,6 @@
     "copy:lib": "cpx 'src/lib/**/{files,workspace}/**/*.*' dist/lib && cpx 'src/lib/**/{files,workspace}/**/.!(gitignore)' dist/lib",
     "test:e2e": "NODE_ENV=test jest --config ./test/jest-e2e.json",
     "prepare": "husky install",
-    "prerelease": "yarn docs:deploy",
     "release": "release-it"
   },
   "dependencies": {
