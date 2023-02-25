@@ -82,3 +82,4 @@ db-data
 .cache
 .DS_Store
 .idea/
+package-lock.json
