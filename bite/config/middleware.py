@@ -1,5 +1,4 @@
 __author__ = "Shafikur Rahman"
-# Middleware
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

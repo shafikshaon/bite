@@ -1,5 +1,6 @@
 __author__ = "Shafikur Rahman"
-# Password validation
+
+from decouple import config
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -8,7 +9,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
         "OPTIONS": {
-            "min_length": 5,
+            "min_length": config("PASSWORD_MIN_LENGTH", cast=int),
         },
     },
     {

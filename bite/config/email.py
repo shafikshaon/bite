@@ -1,4 +1,5 @@
 __author__ = "Shafikur Rahman"
+
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 MAILER_EMAIL_BACKEND = EMAIL_BACKEND
 EMAIL_HOST = "your_mail_server"

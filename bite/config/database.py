@@ -1,5 +1,4 @@
 __author__ = "Shafikur Rahman"
-# Database
 
 from decouple import config
 

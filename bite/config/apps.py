@@ -1,6 +1,5 @@
 __author__ = "Shafikur Rahman"
 
-# Applications
 DJANGO_DEFAULT_APPS = [
     "django.contrib.auth",
     "django.contrib.admin",

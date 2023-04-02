@@ -1,5 +1,4 @@
 __author__ = "Shafikur Rahman"
-# Templates
 
 import os
 

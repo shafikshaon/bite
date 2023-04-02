@@ -1,5 +1,4 @@
 __author__ = "Shafikur Rahman"
-# Static files (CSS, JavaScript, Images)
 
 import os
 

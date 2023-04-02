@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from decouple import config
+
 from .config import apps  # noqa
 from .config import auth  # noqa
 from .config import database  # noqa
@@ -12,9 +14,12 @@ from .config import templates  # noqa
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-l*)*od$+nvs67tc7$!95$0dla2gb3o9i@kp+ncr#b(vhu9361q"
+SECRET_KEY = config(
+    "SECRET_KEY",
+    default="django-insecure-l*)*od$+nvs67tc7$!95$0dla2gb3o9i@kp+ncr#b(vhu9361q",
+)
 
-DEBUG = True
+DEBUG = config("DEBUG", cast=bool)
 
 ALLOWED_HOSTS = []
 

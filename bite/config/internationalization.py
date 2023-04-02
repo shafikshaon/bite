@@ -2,8 +2,6 @@ __author__ = "Shafikur Rahman"
 
 from decouple import config
 
-# Internationalization
-
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = config("TIME_ZONE", default="UTC")
