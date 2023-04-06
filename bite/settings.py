@@ -2,9 +2,9 @@ from pathlib import Path
 
 from decouple import config
 
+from .config import DATABASES  # noqa
 from .config import apps  # noqa
 from .config import auth  # noqa
-from .config import database  # noqa
 from .config import email  # noqa
 from .config import internationalization  # noqa
 from .config import middleware  # noqa
