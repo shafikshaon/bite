@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from decouple import config
@@ -9,7 +10,6 @@ from .config import email  # noqa
 from .config import internationalization  # noqa
 from .config import middleware  # noqa
 from .config import security  # noqa
-from .config import staticfiles  # noqa
 from .config import templates  # noqa
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,3 +34,23 @@ ROOT_URLCONF = "bite.urls"
 WSGI_APPLICATION = "bite.wsgi.application"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+STATIC_URL = "/static/"
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
+
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
+
+
+AUTH_USER_MODEL = "users.User"
