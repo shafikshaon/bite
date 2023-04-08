@@ -1,3 +1,5 @@
+__author__ = "Shafikur Rahman"
+
 from django.contrib.auth.models import AbstractUser
 
 

@@ -4,7 +4,7 @@ import re
 
 from django.contrib.auth.backends import ModelBackend
 
-from users.models import User
+from users.models.users import User
 
 
 class EmailOrUsernameModelBackend(ModelBackend):
