@@ -31,8 +31,3 @@ repos:
           --maxkb=100
         ]
       - id: requirements-txt-fixer
-  - repo: https://github.com/pycqa/isort
-    rev: 5.11.5
-    hooks:
-      - id: isort
-        name: isort (python)
