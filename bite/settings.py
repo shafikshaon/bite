@@ -24,9 +24,7 @@ DEBUG = config("DEBUG", cast=bool)
 
 ALLOWED_HOSTS = []
 
-THIRD_PARTY_APPS = [
-    "rest_framework",
-]
+THIRD_PARTY_APPS = ["rest_framework", "corsheaders", "django_filters"]
 
 INSTALLED_APPS = THIRD_PARTY_APPS + apps.DJANGO_DEFAULT_APPS + apps.CUSTOM_APPS
 
@@ -164,3 +162,5 @@ REST_FRAMEWORK = {
     ),
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
