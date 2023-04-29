@@ -7,4 +7,3 @@ from .email import *  # noqa
 from .internationalization import *  # noqa
 from .middleware import *  # noqa
 from .security import *  # noqa
-from .templates import *  # noqa
