@@ -34,6 +34,7 @@ THIRD_PARTY_APPS = [
     "health_check.contrib.migrations",
     "health_check.contrib.psutil",
     "health_check.contrib.redis",
+    "drf_yasg",
 ]
 
 INSTALLED_APPS = THIRD_PARTY_APPS + apps.DJANGO_DEFAULT_APPS + apps.CUSTOM_APPS
