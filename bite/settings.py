@@ -98,6 +98,8 @@ SIMPLE_JWT = {
 
 APPEND_SLASH = True
 
+LOGIN_REDIRECT_URL = "/"
+
 AUTHENTICATION_BACKENDS = (
     "users.backends.EmailOrUsernameModelBackend",
     "django.contrib.auth.backends.ModelBackend",
@@ -214,3 +216,12 @@ TEMPLATES = [
         },
     },
 ]
+
+
+# Celery
+CELERY_ACCEPT_CONTENT = ["application/json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TIMEZONE = config("TIME_ZONE", default="UTC")
+BROKER_URL = os.getenv("BROKER_URL", "redis://redis:6379")
+CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND", "redis://redis:6379")
