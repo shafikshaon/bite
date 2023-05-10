@@ -9,7 +9,6 @@ from .config import apps  # noqa
 from .config import auth  # noqa
 from .config import email  # noqa
 from .config import internationalization  # noqa
-from .config import middleware  # noqa
 from .config import security  # noqa
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -62,6 +61,22 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+
+if DEBUG:
+    MIDDLEWARE += [
+        "gist.middleware.stats_middleware.StatsMiddleware",
+    ]
+
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
@@ -113,7 +128,7 @@ LOGGING = {
     "formatters": {
         "django.server": {
             "()": "django.utils.log.ServerFormatter",
-            "format": "[%(server_time)s] %(message)s",
+            "format": "%(message)s",
         },
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s"
@@ -140,6 +155,12 @@ LOGGING = {
             "level": "ERROR",
             "class": "django.utils.log.AdminEmailHandler",
         },
+        "file": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": BASE_DIR / "info.log",
+            "formatter": "verbose",
+        },
     },
     "loggers": {
         "django": {
@@ -149,12 +170,12 @@ LOGGING = {
         "django.server": {
             "handlers": ["django.server"],
             "level": "INFO",
-            "propagate": False,
+            "propagate": True,
         },
         "django.request": {
             "handlers": ["mail_admins", "console"],
             "level": "ERROR",
-            "propagate": False,
+            "propagate": True,
         },
         "django.db.backends": {"handlers": ["console"], "level": "INFO"},
     },
@@ -223,5 +244,5 @@ CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = config("TIME_ZONE", default="UTC")
-BROKER_URL = os.getenv("BROKER_URL", "redis://redis:6379")
-CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND", "redis://redis:6379")
+BROKER_URL = config("BROKER_URL", default="redis://redis:6379")
+CELERY_RESULT_BACKEND = config("CELERY_RESULT_BACKEND", default="redis://redis:6379")

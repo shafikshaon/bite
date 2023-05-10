@@ -1,3 +1,4 @@
+import logging
 from functools import reduce
 from operator import add
 from socket import error as SocketError
@@ -8,6 +9,8 @@ from django.utils.deprecation import MiddlewareMixin
 __author__ = "Shafikur Rahman"
 
 import time
+
+logger = logging.getLogger(__name__)
 
 
 class StatsMiddleware(MiddlewareMixin):
@@ -33,6 +36,15 @@ class StatsMiddleware(MiddlewareMixin):
             response["X-Python-Time"] = round(python_time, 2)
             response["X-DB-Time"] = round(db_time, 2)
             response["X-DB-Queries"] = db_queries
+            res = (
+                f"Total time(s): {response['X-Total-Time']}, Python time(s): "
+                f"{response['X-Python-Time']}, DB time(s): {response['X-DB-Time']}, "
+                f"DB-Queries count: {response['X-DB-Queries']}"
+            )
+            print(res)
+            logger.info("This message should be logged")
+
+            logger.log(1, f"Response {res}")
         except SocketError as e:
             print(e)
             pass
