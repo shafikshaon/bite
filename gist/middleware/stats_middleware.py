@@ -42,8 +42,6 @@ class StatsMiddleware(MiddlewareMixin):
                 f"DB-Queries count: {response['X-DB-Queries']}"
             )
             print(res)
-            logger.info("This message should be logged")
-
             logger.log(1, f"Response {res}")
         except SocketError as e:
             print(e)
