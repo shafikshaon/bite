@@ -18,7 +18,7 @@ SECRET_KEY = config(
     default="django-insecure-l*)*od$+nvs67tc7$!95$0dla2gb3o9i@kp+ncr#b(vhu9361q",
 )
 
-DEBUG = config("DEBUG", cast=bool)
+DEBUG = config("DEBUG", cast=bool, default=True)
 
 ALLOWED_HOSTS = []
 
